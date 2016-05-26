@@ -1,0 +1,32 @@
+﻿{
+ "data":{
+    "contentList":[
+        {
+            "id":1,
+            "title":"选择一份新的工作",
+            "author":"林俊杰",
+            "created":"2016-5-9",
+            "category":"理想",
+            "readNum":888,
+            "imageUrl":"",
+            "content":"毕业之后打算重新开始",
+            "boardNum":16,
+            "username":"qq490456661"
+        },
+         {
+                "id":2,
+                "title":"就像爱不曾风平浪静",
+                "author":"林俊杰",
+                "created":"2016-5-9",
+                "category":"理想",
+                "readNum":888,
+                "imageUrl":"",
+                "content":"毕业之后打算重新开始",
+                "boardNum":16,
+                "username":"qq490456661"
+         }
+    ],
+    "total":36
+ },
+ "message":"成功"
+}

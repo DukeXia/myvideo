@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context-3.0.xsd
+    http://www.springframework.org/schema/tx
+    http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+    http://www.springframework.org/schema/jdbc
+    http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd
+    http://www.springframework.org/schema/aop
+    http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+    http://www.springframework.org/schema/mvc
+    http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+    http://code.alibabatech.com/schema/dubbo
+    http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+<!--
+    &lt;!&ndash; 消费方应用名称信息，这个相当于起一个名字，我们dubbo管理页面比较清晰是哪个应用暴露出来的 &ndash;&gt;
+    <dubbo:application name="dubbo_costomer"></dubbo:application>
+    &lt;!&ndash; 使用zookeeper注册中心暴露服务地址 &ndash;&gt;
+    <dubbo:registry address="zookeeper://127.0.0.1:2181" check="false"></dubbo:registry>
+    &lt;!&ndash; 要引用的服务 &ndash;&gt;
+    <dubbo:reference interface="com.raycloud.service.PublicBlogService" id="pb" ></dubbo:reference>
+-->
+
+
+ <!--   <bean id="publicBlogService" class="com.raycloud.service.impl.PublicBlogService"/>
+    &lt;!&ndash; dubbo提供服务 &ndash;&gt;
+    &lt;!&ndash; 提供方应用名称信息，这个相当于起一个名字，我们dubbo管理页面比较清晰是哪个应用暴露出来的 &ndash;&gt;
+    <dubbo:application name="dubbo_provider"></dubbo:application>
+    &lt;!&ndash; 使用zookeeper注册中心暴露服务地址 &ndash;&gt;
+    <dubbo:registry address="zookeeper://127.0.0.1:2181"></dubbo:registry>
+    &lt;!&ndash; 要暴露的服务接口 &ndash;&gt;
+    <dubbo:service interface="com.raycloud.service.PublicBlogService" ref="publicBlogService" />-->
+</beans>
