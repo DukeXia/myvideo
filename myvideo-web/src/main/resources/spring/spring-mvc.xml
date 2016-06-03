@@ -21,13 +21,6 @@
     http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
     <!-- 本配置文件是工名为mvc-dispatcher的DispatcherServlet使用， 提供其相关的Spring MVC配置 -->
 
-    <!-- 简单的aop配置 -->
-    <bean id="checkPrivilege" class="com.raycloud.aop.CheckPrivilegeAOP"/>
-    <aop:config >
-        <aop:aspect id="privilege" ref="checkPrivilege">
-            <aop:before method="check" pointcut="execution(* com.raycloud.service.impl.UserService.addUser(..)))"/>
-        </aop:aspect>
-    </aop:config>
 
     <!-- 事务的注解 -->
     <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>

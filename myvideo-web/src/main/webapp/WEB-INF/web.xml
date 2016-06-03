@@ -8,10 +8,7 @@
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>
-            classpath:spring/applicationContext-datasource.xml,
-            classpath:spring/applicationContext-beans.xml,
-            classpath:spring/applicationContext-quartz.xml,
-            classpath:spring/spring-dubbo.xml
+            classpath:spring/spring-*.xml
         </param-value>
 
     </context-param>

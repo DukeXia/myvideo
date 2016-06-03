@@ -8,17 +8,6 @@
         <result property="id" column="id"/>
         <result property="username" column="username"/>
         <result property="password" column="password"/>
-        <result property="configRule" column="config_rule"/>
-        <result property="nick" column="nick"/>
-        <result property="headPhotoUrl" column="head_photo_url"/>
-        <result property="birthday" column="birthday"/>
-        <result property="address" column="address"/>
-        <result property="sex" column="sex"/>
-        <result property="phone" column="phone"/>
-        <result property="email" column="email"/>
-        <result property="created" column="created"/>
-        <result property="modified" column="modified"/>
-        <result property="status" column="status"/>
     </resultMap>
 
 
@@ -81,27 +70,20 @@
     </select>
 
     <!-- 自定义字段+ 分页 -->
-    <select id="getUserListWithPagesFileds" parameterClass="User"  resultClass="User">
+    <select id="getUserList" parameterClass="User"  resultClass="User">
         <include refid="user.selector"></include>
         <include refid="user.where"></include>
         <include refid="user.order"></include>
         <include refid="user.limit"></include>
     </select>
 
-    <!-- 自定义字段 -->
-    <select id="getUserListFields" parameterClass="User"  resultClass="User">
-        <include refid="user.selector"></include>
-        <include refid="user.where"></include>
-        <include refid="user.order"></include>
-    </select>
-
     <!-- 增加User -->
     <insert id="addUser" parameterClass="User">
         <![CDATA[
                 insert into user
-                (username,password,config_rule,nick,head_photo_url,birthday,address,sex,phone,email,created,status)
+                (username,password)
                 values
-                (#username#,#password#,#configRule#,#nick#,#headPhotoUrl#,#birthday#,#address#,#sex#,#phone#,#email#,#created#,#status#)
+                (#username#,#password#)
                 ]]>
         <selectKey resultClass="Long" keyProperty="id">
             <![CDATA[select last_insert_id() as id]]>
@@ -123,42 +105,9 @@
             <isNotNull prepend="," property="password">
                 password = #password#
             </isNotNull>
-            <isNotNull prepend="," property="configRule">
-                config_rule = #configRule#
-            </isNotNull>
-            <isNotNull prepend="," property="nick">
-                nick = #nick#
-            </isNotNull>
-            <isNotNull prepend="," property="headPhotoUrl">
-                head_photo_url = #headPhotoUrl#
-            </isNotNull>
-            <isNotNull prepend="," property="birthday">
-                birthday = #birthday#
-            </isNotNull>
-            <isNotNull prepend="," property="address">
-                address = #address#
-            </isNotNull>
-            <isNotNull prepend="," property="sex">
-                sex = #sex#
-            </isNotNull>
-            <isNotNull prepend="," property="phone">
-                phone = #phone#
-            </isNotNull>
-            <isNotNull prepend="," property="email">
-                email = #email#
-            </isNotNull>
-            <isNotNull prepend="," property="status">
-                status = #status#
-            </isNotNull>
         </dynamic>
         where id = #id#
     </update>
-
-    <!-- 查询 ，就用query查询方式查吧。-->
-
-
-
-
 
 
 </sqlMap>

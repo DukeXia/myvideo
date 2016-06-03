@@ -1,7 +1,6 @@
 package com.raycloud.response;
 
 import com.raycloud.pojo.Category;
-import com.raycloud.pojo.UserCategoryRelation;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,15 +14,11 @@ public class ViewCategoryList {
 
     private List<CategoryBean> categoryBeanList = new ArrayList<CategoryBean>();
 
-
-
     public class CategoryBean{
 
         private Long id;
 
         private String name;
-
-        private Integer articleNum;
 
         public Long getId() {
             return id;
@@ -31,14 +26,6 @@ public class ViewCategoryList {
 
         public void setId(Long id) {
             this.id = id;
-        }
-
-        public Integer getArticleNum() {
-            return articleNum;
-        }
-
-        public void setArticleNum(Integer articleNum) {
-            this.articleNum = articleNum;
         }
 
         public String getName() {
@@ -51,17 +38,14 @@ public class ViewCategoryList {
     }
 
 
-    public void toCategoryResponse(List<UserCategoryRelation> userCategoryRelationList){
-
+    public void toCategoryResponse(List<Category> categoryList){
         CategoryBean categoryBean = null;
-        for(UserCategoryRelation u : userCategoryRelationList){
+        for(Category c : categoryList){
             categoryBean = new CategoryBean();
-            categoryBean.setName(u.getName());
-            categoryBean.setArticleNum(u.getArticleNum());
-            categoryBean.setId(u.getId());
+            categoryBean.setId(c.getId());
+            categoryBean.setName(c.getName());
             categoryBeanList.add(categoryBean);
         }
-
     }
 
     public Integer getTotal() {

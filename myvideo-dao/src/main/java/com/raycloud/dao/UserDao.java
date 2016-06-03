@@ -13,7 +13,7 @@ import java.util.List;
 public class UserDao extends BaseDao{
 
 
-    public List<User> getUserListByQuery(User user){
+    public List<User> getUserList(User user){
         return getSqlMapClientTemplate().queryForList("User.getUserList",user);
     }
 
