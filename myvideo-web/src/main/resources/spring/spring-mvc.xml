@@ -56,7 +56,7 @@
     <mvc:annotation-driven />
 
     <!-- 静态资源处理， css， js， imgs -->
-    <mvc:resources mapping="/resources/**" location="/resources/" />
+    <mvc:resources mapping="/**" location="/static/" />
 
 
     <!-- 这里是配置json -->
@@ -73,7 +73,7 @@
             class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="viewClass"
                   value="org.springframework.web.servlet.view.JstlView" />
-        <property name="prefix" value="/jsp/" />
+        <property name="prefix" value="/static/" />
         <property name="suffix" value=".jsp" />
     </bean>
 
