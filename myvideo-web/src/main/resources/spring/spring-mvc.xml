@@ -21,13 +21,6 @@
     http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
     <!-- 本配置文件是工名为mvc-dispatcher的DispatcherServlet使用， 提供其相关的Spring MVC配置 -->
 
-    <!-- 简单的aop配置 -->
-    <bean id="checkPrivilege" class="com.raycloud.aop.CheckPrivilegeAOP"/>
-    <aop:config >
-        <aop:aspect id="privilege" ref="checkPrivilege">
-            <aop:before method="check" pointcut="execution(* com.raycloud.service.impl.UserService.addUser(..)))"/>
-        </aop:aspect>
-    </aop:config>
 
     <!-- 事务的注解 -->
     <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>
@@ -63,7 +56,7 @@
     <mvc:annotation-driven />
 
     <!-- 静态资源处理， css， js， imgs -->
-    <mvc:resources mapping="/resources/**" location="/resources/" />
+    <mvc:resources mapping="/**" location="/static/" />
 
 
     <!-- 这里是配置json -->
@@ -80,7 +73,7 @@
             class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="viewClass"
                   value="org.springframework.web.servlet.view.JstlView" />
-        <property name="prefix" value="/jsp/" />
+        <property name="prefix" value="/static/" />
         <property name="suffix" value=".jsp" />
     </bean>
 

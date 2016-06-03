@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
-<sqlMap namespace="Board">
+<sqlMap namespace="Video">
     <!-- 取别名 -->
-    <typeAlias alias="Board" type="com.raycloud.pojo.Board"/>
+    <typeAlias alias="Video" type="com.raycloud.pojo.Video"/>
     <!-- 定制返回的map -->
-    <resultMap id="BoardMap" class="Board" >
+    <resultMap id="VideoMap" class="Video" >
         <result property="id" column="id"/>
-        <result property="content" column="content"/>
-        <result property="articleId" column="article_id"/>
-        <result property="headPhotoUrl" column="head_photo_url"/>
         <result property="username" column="username"/>
+        <result property="title" column="title"/>
+        <result property="desc" column="desc"/>
+        <result property="url" column="url"/>
+        <result property="categoryId" column="category_id"/>
         <result property="created" column="created"/>
         <result property="modified" column="modified"/>
         <result property="status" column="status"/>
@@ -17,10 +18,8 @@
 
     <sql id="fieldsAs">
         id,
-        content,
-        article_id as articleId,
-        head_photo_url as headPhotoUrl,
-        username,
+        username,title,desc,url,
+        category_id as categoryId,
         created,
         modified,
         status
@@ -35,7 +34,7 @@
                <include refid="fieldsAs"></include>
             </isEmpty>
         </dynamic>
-        from board_$splitTableName$
+        from video
     </sql>
     <sql id="where">
         <dynamic prepend="where">
@@ -49,20 +48,26 @@
                     #keys[]#
                 </iterate>
             </isNotEmpty>
-            <isNotNull property="articleId" prepend="and">
-                article_id = #articleId#
-            </isNotNull>
             <isNotNull property="username" prepend="and">
                 username = #username#
             </isNotNull>
-            <isNotNull property="splitTableName" prepend="and">
-                split = $splitTableName$
+            <isNotNull property="title" prepend="and">
+                title = #title#
             </isNotNull>
-            <isNotNull property="content" prepend="and">
-                content = #content#
+            <isNotNull property="titleLike" prepend="and">
+                title like #titleLike#
             </isNotNull>
-            <isNotNull property="headPhotoUrl" prepend="and">
-                head_photo_url = #headPhotoUrl#
+            <isNotNull property="url" prepend="and">
+                url = #url#
+            </isNotNull>
+            <isNotNull property="categoryId" prepend="and">
+                category_id = #categoryId#
+            </isNotNull>
+            <isNotNull property="created" prepend="and">
+                created = #created#
+            </isNotNull>
+            <isNotNull property="modified" prepend="and">
+                modified = #modified#
             </isNotNull>
             <isNotNull property="status" prepend="and">
                 status = #status#
@@ -91,48 +96,58 @@
 
 
 
-
-    <select id="getList" parameterClass="Board"  resultClass="Board">
-        <include refid="selector"></include>
-        <include refid="where"></include>
+    <!-- 获取文章列表 -->
+    <select id="getList" parameterClass="Video"  resultClass="Video">
+        select
+        a.id,
+        a.username,
+        a.title,
+        a.desc,
+        a.url,
+        a.category_id as categoryId,
+        a.created,
+        a.modified,
+        a.status,
+        b.name as category
+        from video a left join category b on a.category_id = b.id
+        <dynamic prepend="where">
+            <isNotNull prepend="and" property="status">
+                a.status = #status#
+            </isNotNull>
+            <isNotNull prepend="and" property="title">
+                a.title = #title#
+            </isNotNull>
+            <isNotNull prepend="and" property="categoryId">
+                a.category_id = #categoryId#
+            </isNotNull>
+            <isNotNull prepend="and" property="username">
+                a.username = #username#
+            </isNotNull>
+        </dynamic>
         <include refid="order"></include>
         <include refid="limit"></include>
     </select>
 
-    <select id="getCount" parameterClass="Board" resultClass="int">
-        select count(1) from board_$splitTableName$
+    <select id="getCount" parameterClass="Video" resultClass="int">
+        select count(1) from video
         <include refid="where"></include>
     </select>
 
-
-    <select id="get" parameterClass="Board"  resultClass="Board">
+    <!-- 获取文章详细内容 -->
+    <select id="get" parameterClass="Video"  resultClass="Video">
         <include refid="selector"></include>
         <include refid="where"></include>
         limit 1
     </select>
 
-    <insert id="insert" parameterClass="Board" >
-        insert into board_$splitTableName$
-        (split,content,article_id,head_photo_url,username,created,status)
-        values(
-        #splitTableName#,
-        #content#,
-        #articleId#,
-        #headPhotoUrl#,
-        #username#,
-        #created#,
-        #status#
-        )
-        <selectKey resultClass="long" keyProperty="id">
-            select last_insert_Id() as id
+    <insert id="insert" parameterClass="Video">
+        insert into video
+        (username,title,desc,url,category_id,created,status)
+        values
+        (#username#,#title#,#desc#,#url#,#categoryId#,#created#,#status#)
+        <selectKey keyProperty="id" resultClass="long">
+            select last_insert_id() as id
         </selectKey>
     </insert>
-
-
-
-
-
-
-
 
 </sqlMap>

@@ -56,17 +56,7 @@ public class UserService {
         user.setUsername(request.getUsername());
         if((user = userDao.get(user)) != null){
             if(!MD5Utils.toHexString(MD5Utils.encodeByMD5(request.getPassword().getBytes())).equals(user.getPassword())){
-                throw new ServiceException(request.getUsername()+"密码错误!", ResponseResultConstant.USER_PASSWORD_ERROR);
-            }
-            //添加新的路由规则
-            if(user.getDbConfig().getUserCategoryRelationDbId() == null){
-                user.getDbConfig().setUserCategoryRelationDbId(DataBaseUtil.getDBId(user.getId(),User.DbConfig.USER_CATEGORY_RELATION_NUM));
-                //更新路由规则
-                user.setConfigRule(JSONObject.toJSONString(user.getDbConfig()));
-                User updateConfigUser = new User();
-                updateConfigUser.setId(user.getId());
-                updateConfigUser.setConfigRule(user.getConfigRule());
-                userDao.update(updateConfigUser);
+                throw new ServiceException(request.getUsername()+"密码错误", 902);
             }
             try {
                 session.setAttribute(httpRequest,httpResponse, UserConstant.USER_INFO_KEY,user);
@@ -78,8 +68,9 @@ public class UserService {
             ViewUserLoginInfo viewUserLoginInfo = new ViewUserLoginInfo();
             viewUserLoginInfo.setUsername(user.getUsername());
             return viewUserLoginInfo;
+        }else{
+            throw new ServiceException(user.getUsername()+"用户名不存在",902);
         }
-        return null;
     }
 
     /**

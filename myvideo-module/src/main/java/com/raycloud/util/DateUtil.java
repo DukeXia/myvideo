@@ -113,6 +113,15 @@ public class DateUtil {
         return null;
     }
 
+    /**
+     * 获取当前的时间
+     * @return
+     */
+    public static Long getCurrentTime(String username){
+        synchronized (username.intern()){
+            return System.currentTimeMillis();
+        }
+    }
 
 
     public static void main(String[] args){

@@ -32,7 +32,11 @@ public class ExceptionHandle {
             response.setResult("901");
         }else if(e instanceof ServiceException){
             ServiceException serviceException = ((ServiceException) e);
-            response.setMessage(ResponseResultConstant.resultString.get(serviceException.getCode()));
+            if(serviceException.getCode() == 902){
+                response.setMessage(serviceException.getMessage());
+            }else {
+                response.setMessage(ResponseResultConstant.resultString.get(serviceException.getCode()));
+            }
             response.setResult(serviceException.getCode()+"");
         }else if(e instanceof InvalidSessionException){
             response.setMessage("用户会话失效，请重新登陆!");
