@@ -5,6 +5,9 @@
   border-bottom: 1px solid #888888;
   padding-bottom: 15px;
 }
+.head .main-search {
+  margin: 0 100px;
+}
 .head .main-search .search-con {
   margin: 0 135px;
 }
@@ -40,7 +43,6 @@
 }
 .login-box {
   position: relative;
-  top: -50px;
 }
 .login-box ul {
   margin: 0;
@@ -74,7 +76,7 @@
 .login-box #login-trigger:hover,
 .login-box #login .active,
 .login-box #signup a:hover {
-  background: #eee;
+  background: #fff;
 }
 .login-box #login-content {
   display: none;
@@ -82,15 +84,15 @@
   top: 43px;
   right: 0;
   z-index: 999;
-  background: #eee;
+  background: #fff;
   background-image: linear-gradient(top, #ffffff, #eeeeee);
   padding: 15px;
-  box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.9);
+  box-shadow: 0 2px 3px -1px rgba(0, 0, 0, 0.9);
   border-radius: 3px 0 3px 3px;
 }
 .login-box li #login-content {
   right: 0;
-  width: 258px;
+  width: 257px;
 }
 /*--------------------*/
 #inputs,
@@ -158,7 +160,7 @@
 .type-list {
   height: 36px;
   position: relative;
-  margin: 50px auto;
+  margin: 0px auto;
   border-radius: 5px;
   border-bottom: 3px solid #888;
   background: #eee;
@@ -185,7 +187,37 @@
 .dot {
   position: absolute;
   top: 36px;
-  left: 0;
+  left: 150px;
   width: 60px;
   border-bottom: 3px solid #111;
+}
+.main-wrap .ad {
+  height: 310px;
+  margin-bottom: 15px;
+  margin-top: 15px;
+  overflow: hidden;
+}
+.main-box {
+  background: #eee;
+}
+.main-box .items {
+  height: 200px;
+  padding: 15px 15px 0 15px;
+}
+.main-box .items:last-child {
+  padding-bottom: 15px;
+}
+.main-box .items .item-con {
+  height: 200px;
+  background: #fff;
+}
+.main-box .items .item-con .item-title {
+  font-size: 16px;
+  padding: 5px;
+}
+.foot {
+  text-align: right;
+  height: 60px;
+  line-height: 60px;
+  font-size: 16px;
 }

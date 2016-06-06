@@ -1,0 +1,18 @@
+<rules>
+    <rule>
+        <namespace>User</namespace>
+        <!--
+               表达式如果不使用自定义路由规则函数,而是直接使用   taobaoId%2==0这种的话就不用在文件
+               中配置<property name="functionsMap">中了
+        -->
+        <!-- <shardingExpression>hash.apply(taobaoId) == 0</shardingExpression> -->
+        <shards>part_0</shards><!-- partition0是名字，在xml配置中有关联 -->
+    </rule>
+   <!-- <rule>
+        <namespace>User</namespace>
+        <shardingExpression>hash.apply(taobaoId) == 1</shardingExpression> &lt;!&ndash; id是字段 &ndash;&gt;
+        <shards>part_1</shards>
+    </rule>
+-->
+
+</rules>

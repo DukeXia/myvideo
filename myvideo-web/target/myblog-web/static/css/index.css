@@ -1,0 +1,191 @@
+.head {
+  height: 60px;
+  line-height: 60px;
+  margin-top: 15px;
+  border-bottom: 1px solid #888888;
+  padding-bottom: 15px;
+}
+.head .main-search .search-con {
+  margin: 0 135px;
+}
+.head .main-search .search-con input {
+  width: 320px;
+  height: 20px;
+  margin: 0;
+  padding: 9px 48px 9px 20px;
+  outline: 0 none;
+  vertical-align: middle;
+  line-height: 20px;
+  font-size: 14px;
+  color: #555;
+  border: 0;
+  background: #fff;
+}
+.head .main-search .search-con span {
+  display: inline-block;
+  height: 38px;
+  text-align: center;
+  width: 80px;
+  font-size: 14px;
+  line-height: 34px;
+  background: #eee;
+  color: #000;
+  transition: all .3s linear;
+  cursor: pointer;
+}
+.head .main-search .search-con span:hover {
+  color: #0099e5;
+  background: #fff;
+  opacity: .5;
+}
+.login-box {
+  position: relative;
+  top: -50px;
+}
+.login-box ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  float: right;
+  border-radius: 3px;
+}
+.login-box li {
+  float: left;
+}
+.login-box #login-trigger,
+.login-box #signup a {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  height: 25px;
+  line-height: 25px;
+  font-weight: bold;
+  padding: 0 8px;
+  text-decoration: none;
+  color: #444;
+  text-shadow: 0 1px 0 #fff;
+}
+.login-box #signup a {
+  border-radius: 0 3px 3px 0;
+}
+.login-box #login-trigger {
+  border-radius: 3px 0 0 3px;
+}
+.login-box #login-trigger:hover,
+.login-box #login .active,
+.login-box #signup a:hover {
+  background: #eee;
+}
+.login-box #login-content {
+  display: none;
+  position: absolute;
+  top: 43px;
+  right: 0;
+  z-index: 999;
+  background: #eee;
+  background-image: linear-gradient(top, #ffffff, #eeeeee);
+  padding: 15px;
+  box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.9);
+  border-radius: 3px 0 3px 3px;
+}
+.login-box li #login-content {
+  right: 0;
+  width: 258px;
+}
+/*--------------------*/
+#inputs,
+#actions {
+  border: 0;
+}
+#inputs input {
+  background: #f1f1f1;
+  padding: 6px 5px;
+  margin: 0 0 5px 0;
+  width: 238px;
+  outline: none;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  box-shadow: 0 1px 1px #ccc inset;
+}
+#inputs input:focus {
+  background-color: #fff;
+  border-color: #e8c291;
+  outline: none;
+  box-shadow: 0 0 0 1px #e8c291 inset;
+}
+/*--------------------*/
+#login #actions {
+  margin: 10px 0 0 0;
+}
+#login #submit {
+  background-color: #0099e5;
+  background-image: linear-gradient(top, #0099e5, #d14545);
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.3) inset;
+  border: none;
+  float: left;
+  height: 30px;
+  padding: 0;
+  width: 100px;
+  cursor: pointer;
+  font: bold 14px Arial, Helvetica;
+  color: #fff;
+}
+#login #submit:hover,
+#login #submit:focus {
+  background-color: #e97171;
+  background-image: linear-gradient(top, #d14545, #e97171);
+}
+#login #submit:active {
+  outline: none;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5) inset;
+}
+#login #submit::-moz-focus-inner {
+  border: none;
+}
+#login label {
+  float: right;
+  line-height: 30px;
+}
+#login label input {
+  position: relative;
+  top: 2px;
+  right: 2px;
+}
+.type-list {
+  height: 36px;
+  position: relative;
+  margin: 50px auto;
+  border-radius: 5px;
+  border-bottom: 3px solid #888;
+  background: #eee;
+}
+.type-list ul li {
+  float: left;
+  height: 30px;
+  width: 60px;
+  line-height: 30px;
+  text-align: center;
+  border-radius: 5px;
+}
+.type-list ul li a {
+  color: #111;
+}
+.type-list ul li:hover {
+  background: #111;
+  transition: all 0.5s linear;
+}
+.type-list ul li:hover a {
+  color: #e8e8e8;
+  transition: all 0.1s linear;
+}
+.dot {
+  position: absolute;
+  top: 36px;
+  left: 0;
+  width: 60px;
+  border-bottom: 3px solid #111;
+}
