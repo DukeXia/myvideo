@@ -77,7 +77,11 @@
         </dynamic>
     </sql>
 
+<<<<<<< HEAD
     <!-- 获取集合 -->
+=======
+    <!-- 获取文章列表 -->
+>>>>>>> aed92bf18a5425d91d772a65a804dc821f8f08e3
     <select id="getList" parameterClass="Category"  resultClass="Category">
         <include refid="selector"></include>
         <include refid="where"></include>
@@ -90,7 +94,11 @@
         <include refid="where"></include>
     </select>
 
+<<<<<<< HEAD
     <!-- 获取单一 -->
+=======
+    <!-- 获取文章详细内容 -->
+>>>>>>> aed92bf18a5425d91d772a65a804dc821f8f08e3
     <select id="get" parameterClass="Category"  resultClass="Category">
         <include refid="selector"></include>
         <include refid="where"></include>
