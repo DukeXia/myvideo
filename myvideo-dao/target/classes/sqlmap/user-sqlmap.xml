@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="User">
+    <!-- 取别名 -->
+    <typeAlias alias="User" type="com.raycloud.pojo.User"/>
+    <!-- 定制返回的map -->
+    <resultMap id="UserMap" class="User" >
+        <result property="id" column="id"/>
+        <result property="username" column="username"/>
+        <result property="password" column="password"/>
+    </resultMap>
+
+
+
+    <sql id="user.selector">
+        select
+        <dynamic>
+            <isNotEmpty property="fields">
+                $fields$
+            </isNotEmpty>
+            <isEmpty property="fields">
+                *
+            </isEmpty>
+        </dynamic>
+        from user
+    </sql>
+    <sql id="user.where">
+        <dynamic prepend="where">
+            <isNotNull property="id" prepend="and">
+                id = #id#
+            </isNotNull>
+            <!-- 支持id集合来查找多个 -->
+            <isNotEmpty property="keys" prepend="and">
+                id in
+                <iterate open="(" close=")" conjunction="," property="keys">
+                    #keys[]#
+                </iterate>
+            </isNotEmpty>
+            <isNotNull property="username" prepend="and">
+                username = #username#
+            </isNotNull>
+            <isNotNull property="password" prepend="and">
+                password = #password#
+            </isNotNull>
+        </dynamic>
+    </sql>
+
+    <!-- 切记，order 后面不能用##,而应该用$$ -->
+    <sql id="user.order">
+        <dynamic prepend="order by">
+            <isNotEmpty property="orderFields">
+                <iterate property="orderFields" conjunction="," open="" close="">
+                    $orderFields[].fieldName$ $orderFields[].order$
+                </iterate>
+            </isNotEmpty>
+        </dynamic>
+    </sql>
+
+    <sql id="user.limit">
+        <dynamic prepend="limit">
+            <isNotEmpty property="startRow">
+                $startRow$,$endRow$
+            </isNotEmpty>
+        </dynamic>
+    </sql>
+
+    <select id="get" parameterClass="User" resultMap="UserMap">
+        <include refid="user.selector"></include>
+        where username = #username# limit 1
+    </select>
+
+    <!-- 自定义字段+ 分页 -->
+    <select id="getUserList" parameterClass="User"  resultClass="User">
+        <include refid="user.selector"></include>
+        <include refid="user.where"></include>
+        <include refid="user.order"></include>
+        <include refid="user.limit"></include>
+    </select>
+
+    <!-- 增加User -->
+    <insert id="addUser" parameterClass="User">
+        <![CDATA[
+                insert into user
+                (username,password)
+                values
+                (#username#,#password#)
+                ]]>
+        <selectKey resultClass="Long" keyProperty="id">
+            <![CDATA[select last_insert_id() as id]]>
+        </selectKey>
+    </insert>
+
+    <!-- 删除User ,物理删除，最好采用逻辑删除，增加字段enable_status来判断是否删除-->
+    <delete id="deleteUserByKey" parameterClass="long">
+        delete from user where id = #id#;
+    </delete>
+
+    <!-- 修改User -->
+    <update id="update" parameterClass="User">
+        update user
+        <dynamic prepend="set">
+            <isNotNull prepend="," property="username">
+                username = #username#
+            </isNotNull>
+            <isNotNull prepend="," property="password">
+                password = #password#
+            </isNotNull>
+        </dynamic>
+        where id = #id#
+    </update>
+
+
+</sqlMap>

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="Category">
+    <!-- 取别名 -->
+    <typeAlias alias="Category" type="com.raycloud.pojo.Category"/>
+    <!-- 定制返回的map -->
+    <resultMap id="CategoryMap" class="Category" >
+        <result property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="created" column="created"/>
+        <result property="modified" column="modified"/>
+        <result property="status" column="status"/>
+    </resultMap>
+
+    <sql id="fieldsAs">
+        id,
+        name,
+        created,
+        modified,
+        status
+    </sql>
+    <sql id="selector">
+        select
+        <dynamic>
+            <isNotEmpty property="fields">
+                $fields$
+            </isNotEmpty>
+            <isEmpty property="fields">
+               <include refid="fieldsAs"></include>
+            </isEmpty>
+        </dynamic>
+        from category
+    </sql>
+    <sql id="where">
+        <dynamic prepend="where">
+            <isNotNull property="id" prepend="and">
+                id = #id#
+            </isNotNull>
+            <!-- 支持id集合来查找多个 -->
+            <isNotEmpty property="keys" prepend="and">
+                id in
+                <iterate open="(" close=")" conjunction="," property="keys">
+                    #keys[]#
+                </iterate>
+            </isNotEmpty>
+            <isNotNull property="name" prepend="and">
+                name = #name#
+            </isNotNull>
+            <isNotNull property="created" prepend="and">
+                created = #created#
+            </isNotNull>
+            <isNotNull property="modified" prepend="and">
+                modified = #modified#
+            </isNotNull>
+            <isNotNull property="status" prepend="and">
+                status = #status#
+            </isNotNull>
+        </dynamic>
+    </sql>
+
+    <!-- 切记，order 后面不能用##,而应该用$$ -->
+    <sql id="order">
+        <dynamic prepend="order by">
+            <isNotEmpty property="orderFields">
+                <iterate property="orderFields" conjunction="," open="" close="">
+                    $orderFields[].fieldName$ $orderFields[].order$
+                </iterate>
+            </isNotEmpty>
+        </dynamic>
+    </sql>
+
+    <sql id="limit">
+        <dynamic prepend="limit">
+            <isNotEmpty property="startRow">
+                $startRow$,$pageSize$
+            </isNotEmpty>
+        </dynamic>
+    </sql>
+
+    <!-- 获取集合 -->
+    <select id="getList" parameterClass="Category"  resultClass="Category">
+        <include refid="selector"></include>
+        <include refid="where"></include>
+        <include refid="order"></include>
+        <include refid="limit"></include>
+    </select>
+
+    <select id="getCount" parameterClass="Category" resultClass="int">
+        select count(1) from category
+        <include refid="where"></include>
+    </select>
+
+    <!-- 获取单一 -->
+    <select id="get" parameterClass="Category"  resultClass="Category">
+        <include refid="selector"></include>
+        <include refid="where"></include>
+        limit 1
+    </select>
+
+    <insert id="insert" parameterClass="Category">
+        insert into category
+        (name,created,status)
+        values
+        (#name#,#created#,#status#)
+        <selectKey keyProperty="id" resultClass="long">
+            select last_insert_id() as id
+        </selectKey>
+    </insert>
+
+
+
+
+
+
+
+
+
+</sqlMap>

@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="Video">
+    <!-- 取别名 -->
+    <typeAlias alias="Video" type="com.raycloud.pojo.Video"/>
+    <!-- 定制返回的map -->
+    <resultMap id="VideoMap" class="Video" >
+        <result property="id" column="id"/>
+        <result property="username" column="username"/>
+        <result property="title" column="title"/>
+        <result property="desc" column="desc"/>
+        <result property="url" column="url"/>
+        <result property="pic" column="pic"/>
+        <result property="categoryId" column="category_id"/>
+        <result property="created" column="created"/>
+        <result property="modified" column="modified"/>
+        <result property="status" column="status"/>
+    </resultMap>
+
+    <sql id="fieldsAs">
+        id,
+        username,title,desc,url,pic,
+        category_id as categoryId,
+        created,
+        modified,
+        status
+    </sql>
+    <sql id="selector">
+        select
+        <dynamic>
+            <isNotEmpty property="fields">
+                $fields$
+            </isNotEmpty>
+            <isEmpty property="fields">
+               <include refid="fieldsAs"></include>
+            </isEmpty>
+        </dynamic>
+        from video
+    </sql>
+    <sql id="where">
+        <dynamic prepend="where">
+            <isNotNull property="id" prepend="and">
+                id = #id#
+            </isNotNull>
+            <!-- 支持id集合来查找多个 -->
+            <isNotEmpty property="keys" prepend="and">
+                id in
+                <iterate open="(" close=")" conjunction="," property="keys">
+                    #keys[]#
+                </iterate>
+            </isNotEmpty>
+            <isNotNull property="username" prepend="and">
+                username = #username#
+            </isNotNull>
+            <isNotNull property="title" prepend="and">
+                title = #title#
+            </isNotNull>
+            <isNotNull property="titleLike" prepend="and">
+                title like #titleLike#
+            </isNotNull>
+            <isNotNull property="url" prepend="and">
+                url = #url#
+            </isNotNull>
+            <isNotNull property="categoryId" prepend="and">
+                category_id = #categoryId#
+            </isNotNull>
+            <isNotNull property="created" prepend="and">
+                created = #created#
+            </isNotNull>
+            <isNotNull property="modified" prepend="and">
+                modified = #modified#
+            </isNotNull>
+            <isNotNull property="status" prepend="and">
+                status = #status#
+            </isNotNull>
+        </dynamic>
+    </sql>
+
+    <!-- 切记，order 后面不能用##,而应该用$$ -->
+    <sql id="order">
+        <dynamic prepend="order by">
+            <isNotEmpty property="orderFields">
+                <iterate property="orderFields" conjunction="," open="" close="">
+                    $orderFields[].fieldName$ $orderFields[].order$
+                </iterate>
+            </isNotEmpty>
+        </dynamic>
+    </sql>
+
+    <sql id="limit">
+        <dynamic prepend="limit">
+            <isNotEmpty property="startRow">
+                $startRow$,$pageSize$
+            </isNotEmpty>
+        </dynamic>
+    </sql>
+
+
+
+    <!-- 获取文章列表 -->
+    <select id="getList" parameterClass="Video"  resultClass="Video">
+        select
+        a.id,
+        a.username,
+        a.title,
+        a.desc,
+        a.url,
+        a.pic,
+        a.category_id as categoryId,
+        a.created,
+        a.modified,
+        a.status,
+        b.name as category
+        from video a left join category b on a.category_id = b.id
+        <dynamic prepend="where">
+            <isNotNull prepend="and" property="status">
+                a.status = #status#
+            </isNotNull>
+            <isNotNull prepend="and" property="title">
+                a.title = #title#
+            </isNotNull>
+            <isNotNull prepend="and" property="categoryId">
+                a.category_id = #categoryId#
+            </isNotNull>
+            <isNotNull prepend="and" property="username">
+                a.username = #username#
+            </isNotNull>
+        </dynamic>
+        <include refid="order"></include>
+        <include refid="limit"></include>
+    </select>
+
+    <select id="getCount" parameterClass="Video" resultClass="int">
+        select count(1) from video
+        <include refid="where"></include>
+    </select>
+
+    <!-- 获取文章详细内容 -->
+    <select id="get" parameterClass="Video"  resultClass="Video">
+        <include refid="selector"></include>
+        <include refid="where"></include>
+        limit 1
+    </select>
+
+    <insert id="insert" parameterClass="Video">
+        insert into video
+        (username,title,desc,url,pic,category_id,created,status)
+        values
+        (#username#,#title#,#desc#,#url#,#pic#,#categoryId#,#created#,#status#)
+        <selectKey keyProperty="id" resultClass="long">
+            select last_insert_id() as id
+        </selectKey>
+    </insert>
+
+</sqlMap>
