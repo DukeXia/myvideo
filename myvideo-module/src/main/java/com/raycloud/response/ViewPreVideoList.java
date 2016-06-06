@@ -7,62 +7,50 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by linjunjie(490456661@qq.com) on 2016/5/10.
+ * Created by linjunjie(490456661@qq.com) on 2016/6/7.
  */
-public class ViewVideoList {
+public class ViewPreVideoList extends ListResponse {
 
-    public void toVideoResponse(List<Video> videoList){
-        videoBeanList = new ArrayList<VideoListBean>();
-        VideoListBean videoListBean = null;
-        for(Video video : videoList){
-            videoListBean = new VideoListBean();
-            videoListBean.setId(video.getId());
-            videoListBean.setUsername(video.getUsername());
-            videoListBean.setTitle(video.getTitle());
-            videoListBean.setDesc(video.getDesc());
-            videoListBean.setCategory(video.getCategory());
-            videoListBean.setUrl(video.getUrl());
-            videoListBean.setPic(video.getPic());
-            videoListBean.setCreated(DateUtil.getDateTime(video.getCreated(), "yyyy-MM-dd HH:mm:ss"));
-            videoBeanList.add(videoListBean);
+
+    public void toResponse(List<Video> videos){
+        List<PreVideoListBean> preVideoListBean = new ArrayList<PreVideoListBean>();
+        PreVideoListBean preVideoBean = null;
+        for(Video v : videos){
+            preVideoBean = new PreVideoListBean();
+            preVideoBean.setUsername(v.getUsername());
+            preVideoBean.setUrl(v.getUrl());
+            preVideoBean.setPic(v.getPic());
+            preVideoBean.setId(v.getId());
+            preVideoBean.setCategory(v.getCategory());
+            preVideoBean.setCreated(DateUtil.getDateTime(v.getCreated(), "yyyy-MM-dd HH:mm:ss"));
+            preVideoBean.setDesc(v.getDesc());
+            preVideoBean.setTitle(v.getTitle());
+            preVideoListBean.add(preVideoBean);
         }
+        preVideoList.add(preVideoListBean);
     }
-
-    /**
-     * videoList : [{"id":1,"username":"qq444","title":"","desc":"描述","url":"...","category":"喜剧","created":"2015/12/20"}]
-     * total : 100
-     */
-
-    private int total;
     /**
      * id : 1
      * username : qq444
      * title :
      * desc : 描述
      * url : ...
+     * pic : ...
      * category : 喜剧
      * created : 2015/12/20
      */
 
-    private List<VideoListBean> videoBeanList;
+    private List<List<PreVideoListBean>> preVideoList = new ArrayList<List<PreVideoListBean>>();
 
-    public int getTotal() {
-        return total;
+    public List<List<PreVideoListBean>> getPreVideoList() {
+        return preVideoList;
     }
 
-    public void setTotal(int total) {
-        this.total = total;
+    public void setPreVideoList(List<List<PreVideoListBean>> preVideoList) {
+        this.preVideoList = preVideoList;
     }
 
-    public List<VideoListBean> getVideoBeanList() {
-        return videoBeanList;
-    }
-
-    public void setVideoBeanList(List<VideoListBean> videoBeanList) {
-        this.videoBeanList = videoBeanList;
-    }
-
-    public static class VideoListBean {
+    public static class PreVideoListBean {
         private Long id;
         private String username;
         private String title;
@@ -71,14 +59,6 @@ public class ViewVideoList {
         private String pic;
         private String category;
         private String created;
-
-        public String getPic() {
-            return pic;
-        }
-
-        public void setPic(String pic) {
-            this.pic = pic;
-        }
 
         public Long getId() {
             return id;
@@ -118,6 +98,14 @@ public class ViewVideoList {
 
         public void setUrl(String url) {
             this.url = url;
+        }
+
+        public String getPic() {
+            return pic;
+        }
+
+        public void setPic(String pic) {
+            this.pic = pic;
         }
 
         public String getCategory() {

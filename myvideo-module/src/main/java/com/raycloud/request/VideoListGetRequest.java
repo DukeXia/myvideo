@@ -13,6 +13,27 @@ public class VideoListGetRequest extends RequestList {
 
     private String username;
 
+    //获取categoryNum个分类的视频信息
+    private Integer categoryNum;
+    //每个分类显示videoNum个分类的视频信息
+    private Integer videoNum;
+
+    public Integer getCategoryNum() {
+        return categoryNum;
+    }
+
+    public void setCategoryNum(Integer categoryNum) {
+        this.categoryNum = categoryNum;
+    }
+
+    public Integer getVideoNum() {
+        return videoNum;
+    }
+
+    public void setVideoNum(Integer videoNum) {
+        this.videoNum = videoNum;
+    }
+
     public Long getCategoryId() {
         return categoryId;
     }

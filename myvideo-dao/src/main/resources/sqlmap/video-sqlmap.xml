@@ -10,6 +10,7 @@
         <result property="title" column="title"/>
         <result property="desc" column="desc"/>
         <result property="url" column="url"/>
+        <result property="pic" column="pic"/>
         <result property="categoryId" column="category_id"/>
         <result property="created" column="created"/>
         <result property="modified" column="modified"/>
@@ -18,7 +19,7 @@
 
     <sql id="fieldsAs">
         id,
-        username,title,desc,url,
+        username,title,desc,url,pic,
         category_id as categoryId,
         created,
         modified,
@@ -104,6 +105,7 @@
         a.title,
         a.desc,
         a.url,
+        a.pic,
         a.category_id as categoryId,
         a.created,
         a.modified,
@@ -142,9 +144,9 @@
 
     <insert id="insert" parameterClass="Video">
         insert into video
-        (username,title,desc,url,category_id,created,status)
+        (username,title,desc,url,pic,category_id,created,status)
         values
-        (#username#,#title#,#desc#,#url#,#categoryId#,#created#,#status#)
+        (#username#,#title#,#desc#,#url#,#pic#,#categoryId#,#created#,#status#)
         <selectKey keyProperty="id" resultClass="long">
             select last_insert_id() as id
         </selectKey>

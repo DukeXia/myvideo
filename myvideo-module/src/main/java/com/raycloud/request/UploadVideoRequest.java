@@ -15,6 +15,16 @@ public class UploadVideoRequest extends Request {
 
     private String desc;
 
+    private MultipartFile pic;
+
+    public MultipartFile getPic() {
+        return pic;
+    }
+
+    public void setPic(MultipartFile pic) {
+        this.pic = pic;
+    }
+
     public String getDesc() {
         return desc;
     }
