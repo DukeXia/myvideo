@@ -1,8 +1,25 @@
 /**
  * Created by Tane on 2016/6/3.
  */
-//��¼
 $(document).ready(function(){
+    //填充分类视频数据
+    var pageNo=1; //页数
+    var pageSize=6 //每页条数
+    //填充分类信息
+    $.ajax({
+        url:'/getVideoList',
+        dataType:'json',
+        data:{'categoryId':1,'pageNo':pageNo,'pageSize':pageSize},
+        success:function(data){
+            console.log(data);
+            if(data.result=='100'){
+
+            }
+        },
+        error:function(data){
+
+        }
+    });
 
     $('#login-trigger').click(function(){
         $(this).next('#login-content').slideToggle();
@@ -19,7 +36,11 @@ $(document).ready(function(){
             data:{'username':username,'password':password},
             dataType:'json',
             success: function (data) {
-                console.log(data)
+                if(data.result=='100'){
+                    //window.open('http://127.0.0.1:8095/index.html');
+                    $('#login-trigger').html('admin');
+                    $('#login-content').slideUp();
+                }
 
             }
         })
