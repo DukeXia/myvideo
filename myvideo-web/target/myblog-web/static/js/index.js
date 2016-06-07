@@ -1,8 +1,9 @@
 /**
  * Created by Tane on 2016/6/3.
  */
-//µÇÂ¼
+//ï¿½ï¿½Â¼
 $(document).ready(function(){
+
     $('#login-trigger').click(function(){
         $(this).next('#login-content').slideToggle();
         $(this).toggleClass('active');
@@ -27,6 +28,7 @@ $(document).ready(function(){
         })
     });
     $(".type-list").find("li").hover(function(){
+        $('.dot').css('width','60px');
         var  listWidth = $(".type-list").width();
         var  remain_left = ($(window).width()-listWidth)/2;
         var _left = $(this).offset().left-remain_left;

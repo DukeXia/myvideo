@@ -5,6 +5,9 @@
   border-bottom: 1px solid #888888;
   padding-bottom: 15px;
 }
+.head .main-search {
+  margin: 0 100px;
+}
 .head .main-search .search-con {
   margin: 0 135px;
 }
@@ -47,7 +50,6 @@
 =======
 .login-box {
   position: relative;
-  top: -50px;
 }
 >>>>>>> aed92bf18a5425d91d772a65a804dc821f8f08e3
 .login-box ul {
@@ -89,8 +91,12 @@
 <<<<<<< HEAD
   background: #fff;
 =======
+<<<<<<< HEAD
+  background: #fff;
+=======
   background: #eee;
 >>>>>>> aed92bf18a5425d91d772a65a804dc821f8f08e3
+>>>>>>> c540b6bee2599aedee26ee44cc2cfc415d31af11
 }
 .login-box #login-content {
   display: none;
@@ -104,20 +110,28 @@
   top: 43px;
   right: 0;
   z-index: 999;
+<<<<<<< HEAD
+  background: #fff;
+=======
   background: #eee;
 >>>>>>> aed92bf18a5425d91d772a65a804dc821f8f08e3
+>>>>>>> c540b6bee2599aedee26ee44cc2cfc415d31af11
   background-image: linear-gradient(top, #ffffff, #eeeeee);
   padding: 15px;
-  box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.9);
+  box-shadow: 0 2px 3px -1px rgba(0, 0, 0, 0.9);
   border-radius: 3px 0 3px 3px;
 }
 .login-box li #login-content {
   right: 0;
 <<<<<<< HEAD
+  width: 257px;
+=======
+<<<<<<< HEAD
   width: 250px;
 =======
   width: 258px;
 >>>>>>> aed92bf18a5425d91d772a65a804dc821f8f08e3
+>>>>>>> c540b6bee2599aedee26ee44cc2cfc415d31af11
 }
 /*--------------------*/
 #inputs,
@@ -199,7 +213,7 @@
 .type-list {
   height: 36px;
   position: relative;
-  margin: 50px auto;
+  margin: 0px auto;
   border-radius: 5px;
   border-bottom: 3px solid #888;
   background: #eee;
@@ -226,8 +240,52 @@
 .dot {
   position: absolute;
   top: 36px;
-  left: 0;
+  left: 150px;
   width: 60px;
   border-bottom: 3px solid #111;
 }
+<<<<<<< HEAD
+.main-wrap .ad {
+  height: 310px;
+  margin-bottom: 15px;
+  margin-top: 15px;
+  overflow: hidden;
+}
+.main-box {
+  background: #eee;
+}
+.main-box .items {
+  height: 251px;
+  padding: 15px 15px 0 15px;
+}
+.main-box .items:last-child {
+  padding-bottom: 15px;
+}
+.main-box .items .item-con {
+  height: 251px;
+  background: #fff;
+}
+.main-box .items .item-con .item-title {
+  font-size: 16px;
+  padding: 5px;
+}
+.main-box .items .item-con .video-list {
+  border-top: 1px solid #eee;
+}
+.main-box .items .item-con .video-list .video-single {
+  width: 289.8px;
+  height: 210px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  display: inline-block;
+  background: #666;
+}
+.foot {
+  text-align: right;
+  height: 60px;
+  line-height: 60px;
+  font-size: 16px;
+}
+=======
 >>>>>>> aed92bf18a5425d91d772a65a804dc821f8f08e3
+>>>>>>> c540b6bee2599aedee26ee44cc2cfc415d31af11

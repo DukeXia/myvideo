@@ -198,17 +198,15 @@
   overflow: hidden;
 }
 .main-box {
-  background: #eee;
+  background: #e8e8e8;
 }
 .main-box .items {
-  height: 251px;
   padding: 15px 15px 0 15px;
 }
 .main-box .items:last-child {
   padding-bottom: 15px;
 }
 .main-box .items .item-con {
-  height: 251px;
   background: #fff;
 }
 .main-box .items .item-con .item-title {
@@ -219,9 +217,10 @@
   border-top: 1px solid #eee;
 }
 .main-box .items .item-con .video-list .video-single {
-  width: 289.8px;
-  height: 210px;
+  width: 225px;
+  height: 110px;
   margin-top: 5px;
+  margin-left: 5px;
   margin-bottom: 5px;
   display: inline-block;
   background: #666;
