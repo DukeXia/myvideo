@@ -23,6 +23,8 @@ public class Video extends BasePojo {
 
     private String url;
 
+    private String pic;
+
     private Long categoryId;
 
     private String category;
@@ -32,6 +34,18 @@ public class Video extends BasePojo {
     private Date modified;
 
     private Integer status;
+
+    public void orderByCreated(boolean desc){
+        this.orderFields.add(new OrderField("created",desc == true ? "desc" : ""));
+    }
+
+    public String getPic() {
+        return pic;
+    }
+
+    public void setPic(String pic) {
+        this.pic = pic;
+    }
 
     public String getDesc() {
         return desc;

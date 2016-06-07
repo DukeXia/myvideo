@@ -77,7 +77,7 @@
         </dynamic>
     </sql>
 
-    <!-- 获取文章列表 -->
+    <!-- 获取集合 -->
     <select id="getList" parameterClass="Category"  resultClass="Category">
         <include refid="selector"></include>
         <include refid="where"></include>
@@ -90,7 +90,7 @@
         <include refid="where"></include>
     </select>
 
-    <!-- 获取文章详细内容 -->
+    <!-- 获取单一 -->
     <select id="get" parameterClass="Category"  resultClass="Category">
         <include refid="selector"></include>
         <include refid="where"></include>

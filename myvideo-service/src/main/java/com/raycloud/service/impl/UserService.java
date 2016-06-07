@@ -52,6 +52,12 @@ public class UserService {
      */
     public ViewUserLoginInfo login(UserLoginRequest request,HttpServletRequest httpRequest,
                       HttpServletResponse httpResponse) throws ServiceException{
+        if(request.getUsername() == null || "".equals(request.getUsername())){
+            throw new ServiceException("用户名不能为空！",902);
+        }
+        if(request.getPassword() == null){
+            throw new ServiceException("密码不能为空！",902);
+        }
         User user = new User();
         user.setUsername(request.getUsername());
         if((user = userDao.get(user)) != null){
@@ -69,7 +75,7 @@ public class UserService {
             viewUserLoginInfo.setUsername(user.getUsername());
             return viewUserLoginInfo;
         }else{
-            throw new ServiceException(user.getUsername()+"用户名不存在",902);
+            throw new ServiceException(request.getUsername()+"用户名不存在",902);
         }
     }
 

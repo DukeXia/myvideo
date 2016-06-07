@@ -3,9 +3,11 @@ package com.raycloud.web;
 import com.raycloud.pojo.Video;
 import com.raycloud.request.Request;
 import com.raycloud.request.UploadVideoRequest;
+import com.raycloud.request.VideoGetRequest;
 import com.raycloud.request.VideoListGetRequest;
 import com.raycloud.response.Response;
 import com.raycloud.response.ViewCategoryList;
+import com.raycloud.response.ViewPreVideoList;
 import com.raycloud.response.ViewVideoList;
 import com.raycloud.service.impl.PublicService;
 import com.raycloud.util.BooleanStatusResponse;
@@ -35,8 +37,29 @@ public class PublicAction extends BaseAction {
     public Response getVideoList(VideoListGetRequest request)throws Exception{
         Response response = new Response(request);
         System.out.println("获取视频列表");
-        ViewVideoList viewVideoList = publicService.getVideoList(request);
-        response.setData(viewVideoList);
+        if(request.getCategoryNum() != null && request.getVideoNum() != null){
+            ViewPreVideoList viewPreVideoList = publicService.getPreVideo(request);
+            response.setData(viewPreVideoList);
+        }else {
+            ViewVideoList viewVideoList = publicService.getVideoList(request);
+            response.setData(viewVideoList);
+        }
+        return response;
+    }
+
+    /**
+     * 获取单一的视频信息
+     * @param request
+     * @return
+     * @throws Exception
+     */
+    @ResponseBody
+    @RequestMapping("getVideo")
+    public Response getVideo(VideoGetRequest request)throws Exception{
+        Response response = new Response(request);
+        System.out.println("获取视频");
+        ViewVideoList.VideoListBean v = publicService.getVideo(request);
+        response.setData(v);
         return response;
     }
 
