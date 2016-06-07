@@ -115,12 +115,6 @@ h6 {
   word-break: keep-all;
   word-wrap: normal;
 }
-.FL {
-  float: left;
-}
-.FR {
-  float: right;
-}
 .UnLine {
   text-decoration: underline;
 }

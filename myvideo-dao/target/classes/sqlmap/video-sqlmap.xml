@@ -10,10 +10,7 @@
         <result property="title" column="title"/>
         <result property="desc" column="desc"/>
         <result property="url" column="url"/>
-<<<<<<< HEAD
         <result property="pic" column="pic"/>
-=======
->>>>>>> aed92bf18a5425d91d772a65a804dc821f8f08e3
         <result property="categoryId" column="category_id"/>
         <result property="created" column="created"/>
         <result property="modified" column="modified"/>
@@ -22,11 +19,7 @@
 
     <sql id="fieldsAs">
         id,
-<<<<<<< HEAD
         username,title,desc,url,pic,
-=======
-        username,title,desc,url,
->>>>>>> aed92bf18a5425d91d772a65a804dc821f8f08e3
         category_id as categoryId,
         created,
         modified,
@@ -112,10 +105,7 @@
         a.title,
         a.desc,
         a.url,
-<<<<<<< HEAD
         a.pic,
-=======
->>>>>>> aed92bf18a5425d91d772a65a804dc821f8f08e3
         a.category_id as categoryId,
         a.created,
         a.modified,
@@ -154,15 +144,9 @@
 
     <insert id="insert" parameterClass="Video">
         insert into video
-<<<<<<< HEAD
         (username,title,desc,url,pic,category_id,created,status)
         values
         (#username#,#title#,#desc#,#url#,#pic#,#categoryId#,#created#,#status#)
-=======
-        (username,title,desc,url,category_id,created,status)
-        values
-        (#username#,#title#,#desc#,#url#,#categoryId#,#created#,#status#)
->>>>>>> aed92bf18a5425d91d772a65a804dc821f8f08e3
         <selectKey keyProperty="id" resultClass="long">
             select last_insert_id() as id
         </selectKey>

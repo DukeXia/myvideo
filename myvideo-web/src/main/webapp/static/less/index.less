@@ -193,18 +193,15 @@
   line-height:30px;
   text-align:center;
   border-radius:5px;
+  cursor:pointer;
 }
-.type-list ul li a{
-  color:#111;
-}
+
 .type-list ul li:hover{
   background:#111;
   transition:all 0.5s linear;
+  color: #fff;
 }
-.type-list ul li:hover a{
-  color:#e8e8e8;
-  transition:all 0.1s linear;
-}
+
 .dot{
   position:absolute;
   top:36px;
@@ -242,13 +239,65 @@
           margin-left: 5px;
           margin-bottom: 5px;
           display: inline-block;
-          background: #666;
+          overflow: hidden;
+          position: relative;
+          .video-layout{
+            width: 225px;
+            height: 110px;
+            position: absolute;
+            top: 110px;
+            background: rgba(0,0,0,.6);
+            color: #e8e8e8;
+            transition: all 0.3s ease;
+            padding: 15px;
+            .player-btn{
+              background: #e8470a;
+              padding: 5px 15px;
+              border-radius: 3px;
+              position: relative;
+              top: 5px;
+              cursor: pointer;
+              &:hover{
+                background: #E92B00;
+              }
+            }
+          }
+          &:hover .video-layout{
+            top: 0;
+          }
         }
       }
     }
   }
 }
 .foot{
+  text-align: center;
+  font-size: 16px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #888;
+  .back{
+    font-size: 12px;
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    line-height: 60px;
+    background: #111;
+    color: #eeeeee;
+    text-align: center;
+    cursor: pointer;
+    font-weight: 700;
+    position: fixed;
+    right: 10px;
+    bottom: 50px;
+    transition: all .4s ease;
+    &:hover{
+      opacity: .8;
+    }
+  }
+}
+.copyright{
   text-align: right;
   height: 60px;
   line-height: 60px;
