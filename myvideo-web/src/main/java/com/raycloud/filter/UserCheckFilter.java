@@ -1,6 +1,11 @@
 package com.raycloud.filter;
 
+import com.raycloud.constant.UserConstant;
+import com.raycloud.exception.ServiceException;
+import com.raycloud.pojo.User;
+
 import javax.servlet.*;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -23,21 +28,24 @@ public class UserCheckFilter implements Filter {
         HttpServletRequest request = (HttpServletRequest)req;
         HttpServletResponse response = (HttpServletResponse)resp;
         //拦截的逻辑
-        /*Map map = request.getParameterMap();
-        Collection collection = map.values();
-        Iterator iterator = collection.iterator();
-        while(iterator.hasNext()){
-            String[] strs = (String[])iterator.next();
-            for(int i=0;i<strs.length;i++){
-                System.out.println("过滤前："+strs[i]);
-                strs[i] = new String(strs[i].getBytes("ISO8859-1"),"UTF-8");
-                System.out.println("过滤后："+strs[i]);
+        String uri = request.getRequestURI();
+        if("/admin/".equals(uri)){
+            /*Cookie[] cookies = request.getCookies();
+            for(Cookie c : cookies){
+                if(UserConstant.USER_INFO_KEY.equals(c.getName())){
+                    //判断是否存在
+                    chain.doFilter(req,resp);
+                    return;
+                }
+            }*/
+            User user = (User)request.getSession().getAttribute(UserConstant.USER_INFO_KEY);
+            if(user != null){
+                chain.doFilter(req, resp);
             }
+            //throw new ServiceException("权限不足",902);
+        }else {
+            chain.doFilter(req, resp);
         }
-        request.setCharacterEncoding("UTF-8");
-        response.setCharacterEncoding("UTF-8");*/
-        //放行
-        chain.doFilter(req,resp);
     }
 
     @Override

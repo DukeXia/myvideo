@@ -52,6 +52,15 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
+    <filter>
+        <filter-name>adminCheck</filter-name>
+        <filter-class>com.raycloud.filter.UserCheckFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>adminCheck</filter-name>
+        <url-pattern>/admin/*</url-pattern>
+    </filter-mapping>
+
 
     <!-- 配置springMVC -->
     <servlet>

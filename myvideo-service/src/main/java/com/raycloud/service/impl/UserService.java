@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.UnsupportedEncodingException;
@@ -66,6 +67,8 @@ public class UserService {
             }
             try {
                 session.setAttribute(httpRequest,httpResponse, UserConstant.USER_INFO_KEY,user);
+                Cookie cookie = new Cookie(UserConstant.USER_INFO_KEY,user.getUsername());
+                httpResponse.addCookie(cookie);
             } catch (InvalidSessionException e) {
                 e.printStackTrace();
                 return null;
