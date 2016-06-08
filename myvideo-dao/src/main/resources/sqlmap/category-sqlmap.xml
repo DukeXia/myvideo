@@ -107,6 +107,9 @@
         </selectKey>
     </insert>
 
+    <delete id="remove" parameterClass="int">
+        delete from category where id = #id#
+    </delete>
 
 
 

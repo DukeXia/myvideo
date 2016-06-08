@@ -28,9 +28,9 @@ public class VideoDao extends BaseDao{
         return (Video)getSqlMapClientTemplate().queryForObject("Video.get",video);
     }
 
-    public Integer delete(){
+    public Integer remove(Long id){
 
-        return null;
+        return (Integer)getSqlMapClientTemplate().delete("Video.remove",id);
     }
 
 }

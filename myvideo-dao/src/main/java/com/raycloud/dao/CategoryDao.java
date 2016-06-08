@@ -27,4 +27,8 @@ public class CategoryDao extends BaseDao {
     public int getCount(Category category){
         return (Integer)getSqlMapClientTemplate().queryForObject("Category.getCount",category);
     }
+
+    public Integer remove(Long id){
+        return (Integer)getSqlMapClientTemplate().delete("Category.remove",id);
+    }
 }

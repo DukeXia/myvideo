@@ -6,9 +6,7 @@ import com.raycloud.exception.ServiceException;
 import com.raycloud.pojo.Category;
 import com.raycloud.pojo.User;
 import com.raycloud.pojo.Video;
-import com.raycloud.request.UploadVideoRequest;
-import com.raycloud.request.VideoGetRequest;
-import com.raycloud.request.VideoListGetRequest;
+import com.raycloud.request.*;
 import com.raycloud.response.ViewCategoryList;
 import com.raycloud.response.ViewPreVideoList;
 import com.raycloud.response.ViewVideoList;
@@ -140,6 +138,29 @@ public class PublicService {
         video.setCreated(new Date());
         video.setStatus(1);
         videoDao.insert(video);
+    }
+
+    /**
+     * 删除分类
+     * @throws ServiceException
+     */
+    public void deleteCategory(CategoryDeleteRequest request)throws ServiceException{
+        if(request.getId() == null){
+            throw new ServiceException("缺少参数",902);
+        }
+        categoryDao.remove(request.getId());
+    }
+
+    /**
+     * 删除视频
+     * @throws ServiceException
+     */
+    public void deleteVideo(VideoDeleteRequest request)throws ServiceException{
+        if(request.getId() == null){
+            throw new ServiceException("缺少参数",902);
+        }
+        videoDao.remove(request.getId());
+
     }
 
 

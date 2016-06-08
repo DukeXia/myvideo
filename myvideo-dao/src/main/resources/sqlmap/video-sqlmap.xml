@@ -152,4 +152,8 @@
         </selectKey>
     </insert>
 
+    <delete id="remove" parameterClass="int">
+        delete from video where id = #id#
+    </delete>
+
 </sqlMap>

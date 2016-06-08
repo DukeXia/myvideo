@@ -1,5 +1,8 @@
 package com.raycloud.web;
 
+import com.raycloud.request.CategoryDeleteRequest;
+import com.raycloud.request.VideoDeleteRequest;
+import com.raycloud.response.Response;
 import com.raycloud.service.impl.PublicService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,7 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * Created by linjunjie(490456661@qq.com) on 2016/6/7.
  */
 @Controller
-@RequestMapping("/admin/")
+@RequestMapping("/admin")
 public class AdminAction {
 
     @Autowired
@@ -20,18 +23,24 @@ public class AdminAction {
      * 删除一个分类
      */
     @ResponseBody
-    @RequestMapping("delCategory")
-    public void delCategory(){
+    @RequestMapping("/delCategory")
+    public Response delCategory(CategoryDeleteRequest request)throws Exception{
+        Response response = new Response(request);
+        publicService.deleteCategory(request);
 
+        return response;
     }
 
     /**
      * 删除一个视频
      */
     @ResponseBody
-    @RequestMapping("delVideo")
-    public void delVideo(){
+    @RequestMapping("/delVideo")
+    public Response delVideo(VideoDeleteRequest request)throws Exception{
+        Response response = new Response(request);
+        publicService.deleteVideo(request);
 
+        return response;
     }
 
 }
