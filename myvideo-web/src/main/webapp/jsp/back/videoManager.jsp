@@ -1,5 +1,5 @@
 <%@page language="java" pageEncoding="UTF-8" %>
-<script type="text/javascript" src="/static/js/videoManager.js"></script>
+<script type="text/javascript" src="/js/videoManager.js"></script>
 <script>
     $(function(){
         video_func.init();

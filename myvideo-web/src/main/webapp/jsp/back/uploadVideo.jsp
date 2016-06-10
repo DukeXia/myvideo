@@ -1,5 +1,5 @@
 <%@page language="java" pageEncoding="UTF-8" %>
-<script type="text/javascript" src="/static/js/addCategory.js"></script>
+<script type="text/javascript" src="/js/addCategory.js"></script>
 <script>
     $(function(){
 

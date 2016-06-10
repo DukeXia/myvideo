@@ -56,7 +56,7 @@
     <mvc:annotation-driven />
 
     <!-- 静态资源处理， css， js， imgs -->
-    <mvc:resources mapping="/*" location="/static" />
+    <mvc:resources mapping="/*" location="/static/" />
 
 
 

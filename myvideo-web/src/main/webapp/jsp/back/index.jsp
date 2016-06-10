@@ -14,22 +14,22 @@
     <title>博客管理系统 v0.0.1</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="/static/bootstrap-3.3.5-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/bootstrap-3.3.5-dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- MetisMenu CSS -->
-    <link href="/static/css/metisMenu.min.css" rel="stylesheet">
+    <link href="/css/metisMenu.min.css" rel="stylesheet">
 
     <!-- Timeline CSS -->
     <!--<link href="../dist/css/timeline.css" rel="stylesheet">-->
 
     <!-- Custom CSS -->
-    <link href="/static/css/sb-admin-2.css" rel="stylesheet">
+    <link href="/css/sb-admin-2.css" rel="stylesheet">
 
     <!-- Morris Charts CSS -->
    <!-- <link href="../bower_components/morrisjs/morris.css" rel="stylesheet">-->
 
     <!-- Custom Fonts -->
-    <link href="/static/bootstrap-3.3.5-dist/css/font-awesome.css" rel="stylesheet" type="text/css">
+    <link href="/bootstrap-3.3.5-dist/css/font-awesome.css" rel="stylesheet" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -39,7 +39,7 @@
     <![endif]-->
 
     <!-- jQuery -->
-    <script src="/static/bootstrap-3.3.5-dist/js/jquery-2.1.1.min.js"></script>
+    <script src="/bootstrap-3.3.5-dist/js/jquery-2.1.1.min.js"></script>
 
 
     <script>
@@ -78,17 +78,17 @@
 
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="/static/bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
+    <script src="/bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
 
     <!-- Metis Menu Plugin JavaScript -->
-    <script src="/static/js/metisMenu.min.js"></script>
+    <script src="/js/metisMenu.min.js"></script>
 
     <!-- Morris Charts JavaScript -->
  <!--   <script src="../bower_components/raphael/raphael-min.js"></script>
     <script src="../bower_components/morrisjs/morris.min.js"></script>
     <script src="../js/morris-data.js"></script>-->
     <!-- Custom Theme JavaScript 初始导航的js-->
-    <script src="/static/js/sb-admin-2.js"></script>
+    <script src="/js/sb-admin-2.js"></script>
 
 
 </body>

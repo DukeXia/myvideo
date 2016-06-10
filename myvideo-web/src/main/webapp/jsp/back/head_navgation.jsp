@@ -1,5 +1,5 @@
 <%@page language="java" pageEncoding="UTF-8" %>
-<script type="text/javascript" src="/static/js/head_navgation.js"></script>
+<script type="text/javascript" src="/js/head_navgation.js"></script>
 <script>
     $(function(){
         //head_navgation.init();

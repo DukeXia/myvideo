@@ -6,11 +6,11 @@ var category_func = {
     categoryId : 0,
     init : function(){
         this.getCategoryListForBack();
-        this.uploadEvent();
+
     },
     uploadEvent : function(){
         //装载删除按钮事件
-        $(document).on("click",".mybtn-delete",function(){
+        $(".mybtn-delete").on("click",function(){
             if(confirm("是否删除\""+$(this).parents("tr").find("td").eq(1).html()+"\"")) {
                 var e = $(this).parents("tr");
                 category_func.categoryId = e.attr("id");
@@ -81,6 +81,7 @@ var category_func = {
                     "</td><td><button type='button' class='mybtn mybtn-delete mybtn-hover'>删除</button></td></tr>";
             }
             $("#category_table tbody").html(contentHtml);
+            this.uploadEvent();
         }
     },
     remove : function(){

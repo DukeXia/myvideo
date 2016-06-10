@@ -56,14 +56,14 @@ var video_func = {
     },
     loadEvent : function(){
         //删除按钮
-        $(document).on("click",".mybtn-delete",function(){
+        $(".mybtn-delete").on("click",function(){
             video_func.id = $(this).parents("tr").attr("id");
             if(confirm("是否删除")){
                 video_func.deleteVideo();
             }
         });
         //上一页，下一页等按钮
-        $(document).on("click",".mybtn-default",function(){
+        $(".mybtn-default").on("click",function(){
             if($(this).attr("pageno")=="-1"){
                 //上一页
                 video_func.upPage();
