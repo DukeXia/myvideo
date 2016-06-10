@@ -163,6 +163,19 @@ public class PublicService {
 
     }
 
+    /**
+     * 添加分类
+     * @param request
+     * @throws ServiceException
+     */
+    public void addCategory(CategoryAddRequest request)throws ServiceException{
+        Category category = new Category();
+        category.setCreated(new Date());
+        category.setName(request.getCategory());
+        category.setStatus(1);
+        categoryDao.insert(category);
+    }
+
 
 
 

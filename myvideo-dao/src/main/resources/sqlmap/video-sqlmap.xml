@@ -152,7 +152,7 @@
         </selectKey>
     </insert>
 
-    <delete id="remove" parameterClass="int">
+    <delete id="remove" parameterClass="long" >
         delete from video where id = #id#
     </delete>
 

@@ -1,5 +1,6 @@
 package com.raycloud.web;
 
+import com.raycloud.request.CategoryAddRequest;
 import com.raycloud.request.CategoryDeleteRequest;
 import com.raycloud.request.VideoDeleteRequest;
 import com.raycloud.response.Response;
@@ -27,6 +28,15 @@ public class AdminAction {
     public Response delCategory(CategoryDeleteRequest request)throws Exception{
         Response response = new Response(request);
         publicService.deleteCategory(request);
+
+        return response;
+    }
+
+    @ResponseBody
+    @RequestMapping("/addCategory")
+    public Response addCategory(CategoryAddRequest request)throws Exception{
+        Response response = new Response(request);
+        publicService.addCategory(request);
 
         return response;
     }
