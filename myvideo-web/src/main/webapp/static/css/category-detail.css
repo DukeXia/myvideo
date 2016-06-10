@@ -1,0 +1,56 @@
+.main-box {
+  background: #e8e8e8;
+}
+.main-box .items {
+  padding: 15px 15px 0 15px;
+  box-shadow: 0px 0px 3px #888;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+.main-box .items:last-child {
+  padding-bottom: 15px;
+}
+.main-box .items .item-con {
+  background: #fff;
+}
+.main-box .items .item-con .item-title {
+  font-size: 16px;
+  padding: 5px;
+}
+.main-box .items .item-con .video-list {
+  border-top: 1px solid #eee;
+}
+.main-box .items .item-con .video-list .video-single {
+  width: 225px;
+  height: 110px;
+  margin-top: 5px;
+  margin-left: 5px;
+  margin-bottom: 5px;
+  display: inline-block;
+  overflow: hidden;
+  position: relative;
+}
+.main-box .items .item-con .video-list .video-single .video-layout {
+  width: 225px;
+  height: 110px;
+  position: absolute;
+  top: 110px;
+  background: rgba(0, 0, 0, 0.6);
+  color: #e8e8e8;
+  transition: all 0.3s ease;
+  padding: 15px;
+}
+.main-box .items .item-con .video-list .video-single .video-layout .player-btn {
+  background: #e8470a;
+  padding: 5px 15px;
+  border-radius: 3px;
+  position: relative;
+  top: 5px;
+  cursor: pointer;
+}
+.main-box .items .item-con .video-list .video-single .video-layout .player-btn:hover {
+  background: #E92B00;
+}
+.main-box .items .item-con .video-list .video-single:hover .video-layout {
+  top: 0;
+}
