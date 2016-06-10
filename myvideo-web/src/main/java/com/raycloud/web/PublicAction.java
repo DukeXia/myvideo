@@ -33,7 +33,7 @@ public class PublicAction extends BaseAction {
      * @return
      */
     @ResponseBody
-    @RequestMapping("getVideoList")
+    @RequestMapping("/getVideoList")
     public Response getVideoList(VideoListGetRequest request)throws Exception{
         Response response = new Response(request);
         System.out.println("获取视频列表");
@@ -54,7 +54,7 @@ public class PublicAction extends BaseAction {
      * @throws Exception
      */
     @ResponseBody
-    @RequestMapping("getVideo")
+    @RequestMapping("/getVideo")
     public Response getVideo(VideoGetRequest request)throws Exception{
         Response response = new Response(request);
         System.out.println("获取视频");
@@ -70,7 +70,7 @@ public class PublicAction extends BaseAction {
      * @throws Exception
      */
     @ResponseBody
-    @RequestMapping("getCategoryList")
+    @RequestMapping("/getCategoryList")
     public Response getCategoryList(Request request)throws Exception{
         Response response = new Response(request);
         System.out.println("获取分类列表");
@@ -85,7 +85,7 @@ public class PublicAction extends BaseAction {
      * @return
      */
     @ResponseBody
-    @RequestMapping("uploadVideo")
+    @RequestMapping("/uploadVideo")
     public Response uploadVideo(UploadVideoRequest request)throws Exception{
         Response response = new Response(request);
         System.out.println("正在上传");

@@ -1,8 +1,9 @@
 <%@page language="java" pageEncoding="UTF-8" %>
-<script type="text/javascript" src="/js/addCategory.js"></script>
+<script type="text/javascript" src="/js/uploadVideo.js"></script>
+<script type="text/javascript" src="/js/jquery-form.js"></script>
 <script>
     $(function(){
-
+        upload_func.init();
     });
 </script>
 <style>
@@ -39,41 +40,29 @@
 </div>
 <div class="row" style="padding-top:17px;">
         <div class="col-md-12 col-xs-12">
-            <div class="panel panel-default" style="">
-
-                <!-- /.panel-heading -->
-                <div class="panel-body" style="    border-bottom: 2px solid rgb(204,183,239);">
-                    <div id="category_table" class="table-responsive">
-                        <table class="table table-hover">
-                            <thead>
-                            <tr>
-                                <th>序号</th>
-                                <th>名字</th>
-
-                                <th>操作</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                           <%-- <tr>
-                                <td>1</td>
-                                <td>文章名</td>
-                                <td>作者</td>
-                                <td>分类</td>
-                                <td>访问量</td>
-                                <td>留言数</td>
-                                <td>创建时间</td>
-                                <td><button type="button" class="mybtn mybtn-delete mybtn-hover">删除</button></td>
-                            </tr>--%>
-
-                            </tbody>
-                        </table>
-                    </div>
-                    <!-- /.table-responsive -->
-
+            <form enctype="multipart/form-data" id="myform">
+                <div class="form-group">
+                    <label for="title">标题</label>
+                    <input type="email" class="form-control" id="title" placeholder="标题">
                 </div>
-                <!-- /.panel-body -->
-            </div>
-            <!-- /.panel -->
+                <div class="form-group">
+                    <label for="desc">描述</label>
+                    <input type="password" class="form-control" id="desc" placeholder="描述">
+                </div>
+                <div class="form-group">
+                    <label for="video">视频上传</label>
+                    <input type="file" id="video">
+                    <p class="help-block">视频文件上传，格式为mp4或avi</p>
+                </div>
+                <div class="form-group">
+                    <label for="pic">封面上传</label>
+                    <input type="file" id="pic">
+                    <p class="help-block">图片格式为png、jpg、gif等</p>
+                </div>
+
+                <button id="btnUpload" type="button" class="btn btn-default">上传</button>
+            </form>
+
         </div>
 </div>
 <!-- /.row -->

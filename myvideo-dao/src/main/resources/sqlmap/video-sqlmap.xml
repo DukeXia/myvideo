@@ -19,7 +19,7 @@
 
     <sql id="fieldsAs">
         id,
-        username,title,desc,url,pic,
+        username,title,`desc`,url,pic,
         category_id as categoryId,
         created,
         modified,
